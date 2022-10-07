@@ -22,9 +22,9 @@ mixin HasOptions<T> {
 class DropdownState<T> with _$DropdownState<T> {
   const factory DropdownState.initial() = _Initial;
   const factory DropdownState.loading() = _Loading;
-  @With<HasOptions<T>>()
+  // @With<HasOptions<T>>()
   const factory DropdownState.options(List<T> options) = _Options;
-  @With<HasOptions<T>>()
+  // @With<HasOptions<T>>()
   const factory DropdownState.selected(List<T> options, T selected) = _Selected;
   const factory DropdownState.error() = _Error;
 }
