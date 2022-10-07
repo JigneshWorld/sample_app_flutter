@@ -3,5 +3,13 @@
     "counterAppBarTitle": "Counter",
     "@counterAppBarTitle": {
         "description": "Text shown in the AppBar of the Counter Page"
-    }
+    },
+    "selectionAppBarTitle": "Selection Screen",
+    "loadingCountries": "Loading Countries",
+    "loadingStates": "Loading States",
+    "selectCountry": "Select Country",
+    "selectState": "Select State",
+    "loadingFailed": "Loading Failed",
+    "pleaseWait": "Please wait...",
+    "statesInitial": "Select Country First"
 }
