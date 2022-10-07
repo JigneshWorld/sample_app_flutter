@@ -8,8 +8,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sample_app_flutter/app_ui_kit/app_ui_kit.dart';
-import 'package:sample_app_flutter/counter/counter.dart';
 import 'package:sample_app_flutter/l10n/l10n.dart';
+import 'package:sample_app_flutter/state_selection/state_selection.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -23,7 +23,7 @@ class App extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const StateSelectionPage(),
     );
   }
 }
