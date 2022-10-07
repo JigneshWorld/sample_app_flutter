@@ -29,7 +29,7 @@ void main() {
 
     testWidgets('renders initial state', (tester) async {
       when(() => stateSelectionBloc.state)
-          .thenReturn(const StateSelectionState());
+          .thenReturn(StateSelectionState.initial());
       await tester.pumpApp(
         BlocProvider.value(
           value: stateSelectionBloc,
@@ -43,7 +43,11 @@ void main() {
     testWidgets('renders Loading Countries & Select Country First',
         (tester) async {
       when(() => stateSelectionBloc.state).thenReturn(
-        const StateSelectionState(country: DropdownState.loading()),
+        // ignore: prefer_const_constructors
+        StateSelectionState(
+          country: const DropdownState<Country>.loading(),
+          state: const DropdownState<State>.initial(),
+        ),
       );
       await tester.pumpApp(
         BlocProvider.value(
@@ -58,7 +62,11 @@ void main() {
     testWidgets('renders Select Country & Select Country First',
         (tester) async {
       when(() => stateSelectionBloc.state).thenReturn(
-        const StateSelectionState(country: DropdownState.options(countries)),
+        // ignore: prefer_const_constructors
+        StateSelectionState(
+          country: const DropdownState<Country>.options(countries),
+          state: const DropdownState<State>.initial(),
+        ),
       );
       await tester.pumpApp(
         BlocProvider.value(
@@ -142,8 +150,10 @@ void main() {
 
     testWidgets('select Country fron Dropdown', (tester) async {
       when(() => stateSelectionBloc.state).thenReturn(
-        const StateSelectionState(
-          country: DropdownState.options(countries),
+        // ignore: prefer_const_constructors
+        StateSelectionState(
+          country: const DropdownState<Country>.options(countries),
+          state: const DropdownState<State>.initial(),
         ),
       );
       await tester.pumpApp(
@@ -170,6 +180,7 @@ void main() {
       when(() => stateSelectionBloc.state).thenReturn(
         StateSelectionState(
           country: DropdownState.selected(countries, countries.first),
+          state: const DropdownState<State>.initial(),
         ),
       );
       await tester.pumpApp(

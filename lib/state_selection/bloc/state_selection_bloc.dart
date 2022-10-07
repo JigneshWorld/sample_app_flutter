@@ -9,7 +9,7 @@ part 'state_selection_state.dart';
 
 class StateSelectionBloc
     extends Bloc<StateSelectionEvent, StateSelectionState> {
-  StateSelectionBloc() : super(const StateSelectionState()) {
+  StateSelectionBloc() : super(StateSelectionState.initial()) {
     on<LoadContriesEvent>(_onLoadContries);
     on<LoadStatesEvent>(_onLoadStates);
     on<CountrySelectedEvent>(_onCountrySelected);
