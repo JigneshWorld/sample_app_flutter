@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
@@ -27,7 +29,8 @@ class StateSelectionBloc
       emit(
         state.copyWith(country: DropdownState.options(countries)),
       );
-    } catch (_) {
+    } catch (e, s) {
+      log('failed to load countries', error: e, stackTrace: s);
       emit(state.copyWith(country: const DropdownState.error()));
     }
   }
@@ -74,7 +77,8 @@ class StateSelectionBloc
         emit(
           state.copyWith(state: DropdownState.options(states)),
         );
-      } catch (_) {
+      } catch (e, s) {
+        log('failed to load states', error: e, stackTrace: s);
         emit(state.copyWith(state: const DropdownState.error()));
       }
     }
