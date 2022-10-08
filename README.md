@@ -10,6 +10,53 @@ A Very Good Project created by Very Good CLI.
 
 ---
 
+## What's Included in this Project? 📦
+
+✅ [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow) using Pull Requests & Squash-Merge \
+ Generally, we protect `master` branch [this way](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches). \
+ For now, protected `master` branch push using `git config branch.master.pushRemote no_push`
+
+✅ Very Good Analysis - Strict Lint Rules which are used at Very Good Ventures
+
+✅ Continuous Integration - Lint, format, test, and enforce code coverage using GitHub Actions
+
+✅ Build Flavors - Multiple flavor support for development, staging, and production
+
+✅ Internationalization Support - Internationalization support using synthetic code generation to streamline the development process
+
+✅ Sound Null-Safety - No more null-dereference exceptions at runtime. Develop with a sound, static type system.
+
+✅ [Provider](https://pub.dev/packages/provider) & [Bloc](https://bloclibrary.dev/) - Integrated bloc architecture for scalable, testable code which offers a clear separation between business logic and presentation
+
+✅ **app_ui_kit** library - UI Kit for colors, styles, spacing, texts, theme, fonts, assets, common componets etc. We can easily split to new package.
+
+✅ **cupid_api** library - Client to handle Cupid APIs.
+We can easily split to new package.
+
+✅ Moduler code with folder by feature
+
+✅ Software Engineering Design & Principles - OOP, Generics, DRY, SOLID etc
+
+✅ Testing - Unit and Widget Tests with 100% line coverage
+
+✅ Logging - Built-in, extensible logging to capture uncaught Flutter and Dart Exceptions
+
+✅ GitHub Issues based Workflow
+
+✅ Credentials/Secrets using system ENV variables and [dart-define](https://dartcode.org/docs/using-dart-define-in-flutter/)
+
+🔜 Analytics Support
+
+🔜 Crash Analytics Support
+
+🔜 Continuous Deployment - Build & Deploy Apps
+
+🔜 [Golden Tests](https://github.com/flutter/flutter/wiki/Writing-a-golden-file-test-for-package:flutter)
+
+🔜 [Integration Tests](https://docs.flutter.dev/cookbook/testing/integration/introduction)
+
+🔜 Many more things to come
+
 ## Getting Started 🚀
 
 This project contains 3 flavors:
@@ -18,7 +65,17 @@ This project contains 3 flavors:
 - staging
 - production
 
-To run the desired flavor either use the launch configuration in VSCode/Android Studio or use the following commands:
+_NOTE: VSCode's launch.json will be using common environment variables from system settings, please set/update those before use._
+
+```
+CUPID_API_BASE_URL=your_api_base_url
+CUPID_API_KEY=your_api_key
+CUPID_API_USER_AGENT=your_api_user_agent
+```
+
+_Please respect platform standards to store/access env variables._
+
+To run the desired flavor either use the launch configuration in VSCode or use the following commands:
 
 ```sh
 # Development
@@ -48,34 +105,123 @@ $ flutter run
 
 _\*Sample App Flutter works on iOS, Android, Web, and Windows._
 
-_NOTE: VSCode's launch.json will be using common environment variables from system settings, please set/update those before use._
-
-```
-CUPID_API_BASE_URL=your_api_base_url
-CUPID_API_KEY=your_api_key
-CUPID_API_USER_AGENT=your_api_user_agent
-```
-
-_Please respect platform standards to store/access env variables._
-
 ---
+
+## Tree
+
+> Project - Level 1
+
+```
+.
+├── LICENSE
+├── README.md
+├── analysis_options.yaml
+├── android
+├── build
+├── coverage
+├── coverage_badge.svg
+├── ios
+├── l10n.yaml
+├── lib
+├── pubspec.lock
+├── pubspec.yaml
+├── test
+├── tools
+├── web
+└── windows
+```
+
+> Flutter Code (./lib)
+
+```
+lib
+├── app
+│   ├── app.dart
+│   └── view
+│       └── app.dart
+├── app_ui_kit
+│   ├── app_ui_kit.dart
+│   └── src
+│       ├── colors
+│       │   └── app_colors.dart
+│       ├── spacing
+│       │   └── app_spacing.dart
+│       └── theme
+│           └── app_theme.dart
+├── bootstrap.dart
+├── cupid_api
+│   ├── cupid_api.dart
+│   └── src
+│       ├── cupid_api_client.dart
+│       └── models
+│           ├── country.dart
+│           ├── country.freezed.dart
+│           ├── country.g.dart
+│           ├── models.dart
+│           ├── state.dart
+│           ├── state.freezed.dart
+│           └── state.g.dart
+├── l10n
+│   ├── arb
+│   │   ├── app_en.arb
+│   │   └── app_es.arb
+│   └── l10n.dart
+├── main_development.dart
+├── main_production.dart
+├── main_staging.dart
+└── state_selection
+    ├── bloc
+    │   ├── state_selection_bloc.dart
+    │   ├── state_selection_bloc.freezed.dart
+    │   ├── state_selection_event.dart
+    │   └── state_selection_state.dart
+    ├── data
+    │   └── mock_data.dart
+    ├── keys.dart
+    ├── state_selection.dart
+    ├── view
+    │   └── state_selection_page.dart
+    └── widgets
+        ├── countries_dropdown.dart
+        ├── dynamic_dropdown.dart
+        ├── states_dropdown.dart
+        ├── submit_fab.dart
+        └── widgets.dart
+
+```
+
+> Tests (./test)
+
+```
+test
+├── app
+│   └── view
+│       └── app_test.dart
+├── app_ui_kit
+│   └── theme
+│       └── app_theme_test.dart
+├── cupid_api
+│   └── src
+│       ├── cupid_api_client_test.dart
+│       └── models
+│           └── models_test.dart
+├── helpers
+│   ├── helpers.dart
+│   └── pump_app.dart
+└── state_selection
+    ├── bloc
+    │   └── state_selection_bloc_test.dart
+    └── view
+        └── state_selection_page_test.dart
+```
 
 ## Running Tests 🧪
 
-To run all unit and widget tests use the following command:
+To run all unit and widget tests with code coverage with [lcov](https://github.com/linux-test-project/lcov):
 
 ```sh
-$ flutter test --coverage --test-randomize-ordering-seed random
-```
-
-To view the generated coverage report you can use [lcov](https://github.com/linux-test-project/lcov).
-
-```sh
-# Generate Coverage Report
-$ genhtml coverage/lcov.info -o coverage/
-
-# Open Coverage Report
-$ open coverage/index.html
+# Generate & Open Coverage Report
+$ ./tools/coverage.sh
 ```
 
 ---
@@ -178,6 +324,12 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
     }
 }
 ```
+
+### Deployment
+
+[Build and release an Android app](https://flutter.dev/docs/deployment/android)
+
+[Build and release an iOS app](https://flutter.dev/docs/deployment/ios)
 
 [coverage_badge]: coverage_badge.svg
 [flutter_localizations_link]: https://api.flutter.dev/flutter/flutter_localizations/flutter_localizations-library.html
