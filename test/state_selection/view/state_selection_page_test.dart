@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
-import 'package:sample_app_flutter/state_selection/data/mock_data.dart';
 import 'package:sample_app_flutter/state_selection/keys.dart';
 import 'package:sample_app_flutter/state_selection/state_selection.dart';
 
 import '../../helpers/helpers.dart';
+import '../data/mock_data.dart';
 
 class MockStateSelectionBloc
     extends MockBloc<StateSelectionEvent, StateSelectionState>

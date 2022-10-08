@@ -1,9 +1,10 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
-import 'package:sample_app_flutter/state_selection/data/mock_data.dart';
 import 'package:sample_app_flutter/state_selection/state_selection.dart';
 import 'package:test/test.dart';
+
+import '../data/mock_data.dart';
 
 class MockCupidApiClient extends Mock implements CupidApiClient {}
 
