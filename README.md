@@ -22,16 +22,41 @@ To run the desired flavor either use the launch configuration in VSCode/Android 
 
 ```sh
 # Development
-$ flutter run --flavor development --target lib/main_development.dart
+$ flutter run
+        --flavor development
+        --target lib/main_development.dart
+        --dart-define CUPID_API_BASE_URL=$CUPID_API_BASE_URL
+        --dart-define CUPID_API_KEY=$CUPID_API_KEY
+        --dart-define CUPID_API_USER_AGENT=$CUPID_API_USER_AGENT
 
 # Staging
-$ flutter run --flavor staging --target lib/main_staging.dart
+$ flutter run
+        --flavor staging
+        --target lib/main_staging.dart
+        --dart-define CUPID_API_BASE_URL=$CUPID_API_BASE_URL
+        --dart-define CUPID_API_KEY=$CUPID_API_KEY
+        --dart-define CUPID_API_USER_AGENT=$CUPID_API_USER_AGENT
 
 # Production
-$ flutter run --flavor production --target lib/main_production.dart
+$ flutter run
+        --flavor production
+        --target lib/main_production.dart
+        --dart-define CUPID_API_BASE_URL=$CUPID_API_BASE_URL
+        --dart-define CUPID_API_KEY=$CUPID_API_KEY
+        --dart-define CUPID_API_USER_AGENT=$CUPID_API_USER_AGENT
 ```
 
 _\*Sample App Flutter works on iOS, Android, Web, and Windows._
+
+_NOTE: VSCode's launch.json will be using common environment variables from system settings, please set/update those before use._
+
+```
+CUPID_API_BASE_URL=your_api_base_url
+CUPID_API_KEY=your_api_key
+CUPID_API_USER_AGENT=your_api_user_agent
+```
+
+_Please respect platform standards to store/access env variables._
 
 ---
 
