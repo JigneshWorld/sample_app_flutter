@@ -2,6 +2,7 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
 import 'package:sample_app_flutter/state_selection/data/mock_data.dart';
 import 'package:sample_app_flutter/state_selection/keys.dart';
 import 'package:sample_app_flutter/state_selection/state_selection.dart';
@@ -12,10 +13,22 @@ class MockStateSelectionBloc
     extends MockBloc<StateSelectionEvent, StateSelectionState>
     implements StateSelectionBloc {}
 
+class MockCupidApiClient extends Mock implements CupidApiClient {}
+
 void main() {
   group('StateSelectionBloc', () {
+    late CupidApiClient apiClient;
+    setUp(() {
+      apiClient = MockCupidApiClient();
+    });
     testWidgets('renders StateSelectionView', (tester) async {
-      await tester.pumpApp(const StateSelectionPage());
+      when(() => apiClient.getCountries()).thenAnswer((_) => Future.value([]));
+      await tester.pumpApp(
+        RepositoryProvider.value(
+          value: apiClient,
+          child: const StateSelectionPage(),
+        ),
+      );
       expect(find.byType(StateSelectionView), findsOneWidget);
     });
   });
