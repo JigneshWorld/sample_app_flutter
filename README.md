@@ -12,6 +12,14 @@ A Very Good Project created by Very Good CLI.
 
 ## What's Included in this Project? 📦
 
+✅ [Video Demo Link](https://drive.google.com/file/d/1POacz3O9P3HYWGF-EoNO3n65IZ7UpeOp/view?usp=sharing)
+
+✅ App handles feature requirements gracefully with many different states (initial, loading, options, selected and error).
+
+✅ App handles country/state relationship - when country and state both selected and user change country then state should reset.
+
+✅ App handles these dropdown as part of form - when both input has valid values then we show FAB placeholder to indicate user is ready to go.
+
 ✅ [GitHub Flow](https://docs.github.com/en/get-started/quickstart/github-flow) using Pull Requests & Squash-Merge \
  Generally, we protect `master` branch [this way](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches). \
  For now, protected `master` branch push using `git config branch.master.pushRemote no_push`
@@ -45,15 +53,19 @@ We can easily split to new package.
 
 ✅ Credentials/Secrets using system ENV variables and [dart-define](https://dartcode.org/docs/using-dart-define-in-flutter/)
 
+🔜 Cache Data
+
 🔜 Analytics Support
 
 🔜 Crash Analytics Support
 
-🔜 Continuous Deployment - Build & Deploy Apps
+🔜 Update Brandings (Icons, Assets, Splash etc.)
 
 🔜 [Golden Tests](https://github.com/flutter/flutter/wiki/Writing-a-golden-file-test-for-package:flutter)
 
 🔜 [Integration Tests](https://docs.flutter.dev/cookbook/testing/integration/introduction)
+
+🔜 Continuous Deployment - Build & Deploy Apps
 
 🔜 Many more things to come
 
