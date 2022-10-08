@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sample_app_flutter/state_selection/data/mock_data.dart';
-import 'package:sample_app_flutter/state_selection/models/models.dart';
+import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
 
 part 'state_selection_bloc.freezed.dart';
 part 'state_selection_event.dart';
@@ -9,23 +8,28 @@ part 'state_selection_state.dart';
 
 class StateSelectionBloc
     extends Bloc<StateSelectionEvent, StateSelectionState> {
-  StateSelectionBloc() : super(StateSelectionState.initial()) {
+  StateSelectionBloc(this._apiClient) : super(StateSelectionState.initial()) {
     on<LoadContriesEvent>(_onLoadContries);
     on<LoadStatesEvent>(_onLoadStates);
     on<CountrySelectedEvent>(_onCountrySelected);
     on<StateSelectedEvent>(_onStateSelected);
   }
 
+  final CupidApiClient _apiClient;
+
   Future<void> _onLoadContries(
     LoadContriesEvent event,
     Emitter<StateSelectionState> emit,
   ) async {
     emit(state.copyWith(country: const DropdownState.loading()));
-    emit(
-      state.copyWith(
-        country: const DropdownState.options([...countries]),
-      ),
-    );
+    try {
+      final countries = await _apiClient.getCountries();
+      emit(
+        state.copyWith(country: DropdownState.options(countries)),
+      );
+    } catch (_) {
+      emit(state.copyWith(country: const DropdownState.error()));
+    }
   }
 
   Future<void> _onCountrySelected(
@@ -61,9 +65,18 @@ class StateSelectionBloc
     Emitter<StateSelectionState> emit,
   ) async {
     emit(state.copyWith(state: const DropdownState.loading()));
-    final selectedCountry =
-        state.country.whenOrNull(selected: (options, selected) => selected);
-    final states = countryStates[selectedCountry] ?? <State>[];
-    emit(state.copyWith(state: DropdownState.options([...states])));
+    final selectedCountryId = state.country.whenOrNull(
+      selected: (options, selected) => selected.id,
+    );
+    if (selectedCountryId != null) {
+      try {
+        final states = await _apiClient.getStates(selectedCountryId);
+        emit(
+          state.copyWith(state: DropdownState.options(states)),
+        );
+      } catch (_) {
+        emit(state.copyWith(state: const DropdownState.error()));
+      }
+    }
   }
 }

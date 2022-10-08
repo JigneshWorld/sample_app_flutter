@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'state.dart';
+part of 'country.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,29 +14,36 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Country _$CountryFromJson(Map<String, dynamic> json) {
+  return _Country.fromJson(json);
+}
+
 /// @nodoc
-mixin _$State {
-  int get id => throw _privateConstructorUsedError;
+mixin _$Country {
+  int get id =>
+      throw _privateConstructorUsedError; // ignore: invalid_annotation_target
+  @JsonKey(name: 'value')
   String get name => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StateCopyWith<State> get copyWith => throw _privateConstructorUsedError;
+  $CountryCopyWith<Country> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateCopyWith<$Res> {
-  factory $StateCopyWith(State value, $Res Function(State) then) =
-      _$StateCopyWithImpl<$Res>;
-  $Res call({int id, String name});
+abstract class $CountryCopyWith<$Res> {
+  factory $CountryCopyWith(Country value, $Res Function(Country) then) =
+      _$CountryCopyWithImpl<$Res>;
+  $Res call({int id, @JsonKey(name: 'value') String name});
 }
 
 /// @nodoc
-class _$StateCopyWithImpl<$Res> implements $StateCopyWith<$Res> {
-  _$StateCopyWithImpl(this._value, this._then);
+class _$CountryCopyWithImpl<$Res> implements $CountryCopyWith<$Res> {
+  _$CountryCopyWithImpl(this._value, this._then);
 
-  final State _value;
+  final Country _value;
   // ignore: unused_field
-  final $Res Function(State) _then;
+  final $Res Function(Country) _then;
 
   @override
   $Res call({
@@ -57,28 +64,29 @@ class _$StateCopyWithImpl<$Res> implements $StateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_StateCopyWith<$Res> implements $StateCopyWith<$Res> {
-  factory _$$_StateCopyWith(_$_State value, $Res Function(_$_State) then) =
-      __$$_StateCopyWithImpl<$Res>;
+abstract class _$$_CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
+  factory _$$_CountryCopyWith(
+          _$_Country value, $Res Function(_$_Country) then) =
+      __$$_CountryCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name});
+  $Res call({int id, @JsonKey(name: 'value') String name});
 }
 
 /// @nodoc
-class __$$_StateCopyWithImpl<$Res> extends _$StateCopyWithImpl<$Res>
-    implements _$$_StateCopyWith<$Res> {
-  __$$_StateCopyWithImpl(_$_State _value, $Res Function(_$_State) _then)
-      : super(_value, (v) => _then(v as _$_State));
+class __$$_CountryCopyWithImpl<$Res> extends _$CountryCopyWithImpl<$Res>
+    implements _$$_CountryCopyWith<$Res> {
+  __$$_CountryCopyWithImpl(_$_Country _value, $Res Function(_$_Country) _then)
+      : super(_value, (v) => _then(v as _$_Country));
 
   @override
-  _$_State get _value => super._value as _$_State;
+  _$_Country get _value => super._value as _$_Country;
 
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_State(
+    return _then(_$_Country(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -92,29 +100,36 @@ class __$$_StateCopyWithImpl<$Res> extends _$StateCopyWithImpl<$Res>
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$_Country implements _Country {
+  const _$_Country(
+      {required this.id, @JsonKey(name: 'value') required this.name});
 
-class _$_State implements _State {
-  const _$_State({required this.id, required this.name});
+  factory _$_Country.fromJson(Map<String, dynamic> json) =>
+      _$$_CountryFromJson(json);
 
   @override
   final int id;
+// ignore: invalid_annotation_target
   @override
+  @JsonKey(name: 'value')
   final String name;
 
   @override
   String toString() {
-    return 'State(id: $id, name: $name)';
+    return 'Country(id: $id, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_State &&
+            other is _$_Country &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -123,20 +138,31 @@ class _$_State implements _State {
 
   @JsonKey(ignore: true)
   @override
-  _$$_StateCopyWith<_$_State> get copyWith =>
-      __$$_StateCopyWithImpl<_$_State>(this, _$identity);
+  _$$_CountryCopyWith<_$_Country> get copyWith =>
+      __$$_CountryCopyWithImpl<_$_Country>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CountryToJson(
+      this,
+    );
+  }
 }
 
-abstract class _State implements State {
-  const factory _State({required final int id, required final String name}) =
-      _$_State;
+abstract class _Country implements Country {
+  const factory _Country(
+      {required final int id,
+      @JsonKey(name: 'value') required final String name}) = _$_Country;
+
+  factory _Country.fromJson(Map<String, dynamic> json) = _$_Country.fromJson;
 
   @override
   int get id;
-  @override
+  @override // ignore: invalid_annotation_target
+  @JsonKey(name: 'value')
   String get name;
   @override
   @JsonKey(ignore: true)
-  _$$_StateCopyWith<_$_State> get copyWith =>
+  _$$_CountryCopyWith<_$_Country> get copyWith =>
       throw _privateConstructorUsedError;
 }

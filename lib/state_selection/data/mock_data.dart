@@ -1,4 +1,4 @@
-import 'package:sample_app_flutter/state_selection/models/models.dart';
+import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
 
 const _india = Country(id: 1, name: 'India');
 const _australia = Country(id: 2, name: 'Australia');

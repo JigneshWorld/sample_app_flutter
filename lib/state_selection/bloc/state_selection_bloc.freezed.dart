@@ -741,15 +741,11 @@ class __$$_StateSelectionStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_StateSelectionState implements _StateSelectionState {
-  const _$_StateSelectionState(
-      {this.country = const DropdownState<Country>.initial(),
-      this.state = const DropdownState<State>.initial()});
+  const _$_StateSelectionState({required this.country, required this.state});
 
   @override
-  @JsonKey()
   final DropdownState<Country> country;
   @override
-  @JsonKey()
   final DropdownState<State> state;
 
   @override
@@ -781,8 +777,8 @@ class _$_StateSelectionState implements _StateSelectionState {
 
 abstract class _StateSelectionState implements StateSelectionState {
   const factory _StateSelectionState(
-      {final DropdownState<Country> country,
-      final DropdownState<State> state}) = _$_StateSelectionState;
+      {required final DropdownState<Country> country,
+      required final DropdownState<State> state}) = _$_StateSelectionState;
 
   @override
   DropdownState<Country> get country;
