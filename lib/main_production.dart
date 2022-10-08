@@ -7,7 +7,8 @@
 
 import 'package:sample_app_flutter/app/app.dart';
 import 'package:sample_app_flutter/bootstrap.dart';
+import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
 
 void main() {
-  bootstrap(() => const App());
+  bootstrap((CupidApiClient apiClient) => App(apiClient: apiClient));
 }

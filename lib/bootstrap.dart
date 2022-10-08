@@ -10,6 +10,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -25,15 +26,31 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+Future<void> bootstrap(
+  FutureOr<Widget> Function(CupidApiClient apiClient) builder,
+) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
 
+  const baseUrl = String.fromEnvironment('CUPID_API_BASE_URL');
+  const apiKey = String.fromEnvironment('CUPID_API_KEY');
+  const userAgent = String.fromEnvironment('CUPID_API_USER_AGENT');
+
+  assert(baseUrl.isNotEmpty, 'please add dart-config:CUPID_API_BASE_URL');
+  assert(apiKey.isNotEmpty, 'please add dart-config:CUPID_API_KEY');
+  assert(userAgent.isNotEmpty, 'please add dart-config:CUPID_API_USER_AGENT');
+
+  final apiClient = CupidApiClient(
+    baseUrl: baseUrl,
+    apiKey: apiKey,
+    userAgent: userAgent,
+  );
+
   Bloc.observer = AppBlocObserver();
 
   await runZonedGuarded(
-    () async => runApp(await builder()),
+    () async => runApp(await builder(apiClient)),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

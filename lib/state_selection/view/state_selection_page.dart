@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sample_app_flutter/app_ui_kit/app_ui_kit.dart';
+import 'package:sample_app_flutter/cupid_api/cupid_api.dart';
 import 'package:sample_app_flutter/l10n/l10n.dart';
 import 'package:sample_app_flutter/state_selection/bloc/state_selection_bloc.dart';
 import 'package:sample_app_flutter/state_selection/widgets/widgets.dart';
@@ -11,8 +12,8 @@ class StateSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) =>
-          StateSelectionBloc()..add(const StateSelectionEvent.loadCountries()),
+      create: (_) => StateSelectionBloc(context.read<CupidApiClient>())
+        ..add(const StateSelectionEvent.loadCountries()),
       child: const StateSelectionView(),
     );
   }
